@@ -1,13 +1,13 @@
-const value1Input = document.querySelector('.calculator__inputs--value1');
-const value2Input = document.querySelector('.calculator__inputs--value2');
-const resultInput = document.querySelector('.calculator__result--value');
 
 function calculate(operation) {
-  const value1 = parseFloat(value1Input.value);
-  const value2 = parseFloat(value2Input.value);
-  
+  const value1 = parseFloat(document.querySelector('.calculator__inputs--value1').value);
+  const value2 = parseFloat(document.querySelector('.calculator__inputs--value2').value);
+  const resultInput = document.querySelector('.calculator__result--value');
+
   if (isNaN(value1) || isNaN(value2)) {
-    alert("Please Enter a Valid Number.")
+    alert("Please Enter a Valid Number.");
+    resultInput.value = '';
+    return;
   }
   
   let result;
@@ -33,7 +33,7 @@ function calculate(operation) {
       result = 'Invalid operation';
   }
   
-  resultInput.value = result;
+  resultInput.value = result.toFixed(2);
 }
 
 document.querySelector('.calculator__operations--add').addEventListener('click', () => calculate('add'));
